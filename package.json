@@ -21,22 +21,24 @@
   },
   "dependencies": {
     "@omer-x/next-openapi-json-generator": "^0.1.0",
-    "@omer-x/next-swagger-jsdoc": "^0.1.2",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.31.1",
     "drizzle-zod": "^0.5.1",
     "next": "^14.2.3",
     "pg": "^8.12.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "swagger-ui-react": "^5.17.14"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.2.3",
     "@omer-x/eslint-config": "^1.0.7",
     "@omer-x/next-openapi-interface-generator": "^0.6.0",
+    "@omer-x/openapi-types": "^0.1.0",
     "@types/node": "20.14.2",
     "@types/pg": "^8.11.6",
     "@types/react": "18.3.3",
+    "@types/swagger-ui-react": "^4.18.3",
     "drizzle-kit": "^0.22.2",
     "eslint": "^8.57.0",
     "ts-unused-exports": "^10.1.0",
