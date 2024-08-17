@@ -33,7 +33,7 @@
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.2.3",
     "@omer-x/eslint-config": "^1.0.7",
-    "@omer-x/next-openapi-interface-generator": "^0.6.0",
+    "@omer-x/next-openapi-interface-generator": "^0.10.2",
     "@omer-x/openapi-types": "^0.1.0",
     "@types/node": "20.14.2",
     "@types/pg": "^8.11.6",
