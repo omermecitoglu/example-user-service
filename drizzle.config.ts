@@ -4,7 +4,7 @@ import type { Config } from "drizzle-kit";
 
 export default {
   dialect: "postgresql",
-  schema: "./src/core/schema.ts",
+  schema: "./src/database/schema.ts",
   out: "./drizzle",
   dbCredentials: {
     host: process.env.DATABASE_HOST || "localhost",
