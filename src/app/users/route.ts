@@ -1,6 +1,6 @@
 import createRoute from "@omer-x/next-openapi-route-handler";
 import db from "~/database";
-import { users } from "~/database/schema";
+import { users } from "~/database/schema/users";
 import { NewUserDTO, UserDTO } from "~/models/user";
 
 export const { GET } = createRoute({

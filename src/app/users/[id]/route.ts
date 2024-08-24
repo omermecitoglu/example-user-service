@@ -2,7 +2,7 @@ import createRoute from "@omer-x/next-openapi-route-handler";
 import { eq } from "drizzle-orm";
 import z from "zod";
 import db from "~/database";
-import { users } from "~/database/schema";
+import { users } from "~/database/schema/users";
 import { UserDTO, UserPatchDTO } from "~/models/user";
 
 export const { GET } = createRoute({

@@ -1,10 +1,12 @@
-import "dotenv/config";
 import getPackageMetadata from "@omer-x/package-metadata";
+import dotenv from "dotenv";
 import type { Config } from "drizzle-kit";
+
+dotenv.config({ path: [".env.local", ".env"] });
 
 export default {
   dialect: "postgresql",
-  schema: "./src/database/schema.ts",
+  schema: "./src/database/schema/*.ts",
   out: "./drizzle",
   dbCredentials: {
     host: process.env.DATABASE_HOST || "localhost",

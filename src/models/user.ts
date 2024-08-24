@@ -1,5 +1,5 @@
 import { createInsertSchema } from "drizzle-zod";
-import { users } from "~/database/schema";
+import { users } from "~/database/schema/users";
 
 export const UserDTO = createInsertSchema(users, {
   id: schema => schema.id.describe("Unique identifier of the user"),
