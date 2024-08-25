@@ -1,77 +1,64 @@
-import createRoute from "@omer-x/next-openapi-route-handler";
-import { eq } from "drizzle-orm";
-import z from "zod";
+import defineRoute from "@omer-x/next-openapi-route-handler";
 import db from "~/database";
-import { users } from "~/database/schema/users";
 import { UserDTO, UserPatchDTO } from "~/models/user";
+import deleteUser from "~/operations/deleteUser";
+import getUser from "~/operations/getUser";
+import updateUser from "~/operations/updateUser";
 
-export const { GET } = createRoute({
+export const { GET } = defineRoute({
   operationId: "getUser",
   method: "GET",
-  summary: "Get a specific user by ID",
-  description: "Retrieve details of a specific user by their ID",
+  summary: "Get user",
+  description: "Get a specific user by ID",
   tags: ["Users"],
-  pathParams: z.object({
-    id: z.string().describe("ID of the user"),
-  }),
+  pathParams: UserDTO.pick({ id: true }),
   action: async ({ pathParams }) => {
-    const results = await db.select().from(users).where(eq(users.id, pathParams.id));
-    const user = results.shift();
-    if (!user) return new Response(null, { status: 404 });
-    return Response.json(user);
+    const user = await getUser(db, pathParams.id);
+    if (user) {
+      return Response.json(user);
+    }
+    return new Response(null, { status: 404 });
   },
   responses: {
-    200: { description: "User details retrieved successfully", content: UserDTO },
+    200: { description: "User found", content: UserDTO },
     404: { description: "User not found" },
   },
 });
 
-export const { PATCH } = createRoute({
+export const { PATCH } = defineRoute({
   operationId: "updateUser",
   method: "PATCH",
-  summary: "Update a specific user by ID",
-  description: "Modify details of a specific user by their ID",
+  summary: "Update user",
+  description: "Update a specific user by ID",
   tags: ["Users"],
-  pathParams: z.object({
-    id: z.string().describe("ID of the user"),
-  }),
+  pathParams: UserDTO.pick({ id: true }),
   requestBody: UserPatchDTO,
   action: async ({ pathParams, body }) => {
-    const results = await db.update(users)
-      .set(body)
-      .where(eq(users.id, pathParams.id))
-      .returning();
-    const user = results.shift();
-    if (!user || user.id !== pathParams.id) {
-      return new Response(null, { status: 404 });
+    const user = await updateUser(db, pathParams.id, body);
+    if (user?.id === pathParams.id) {
+      return Response.json(user);
     }
-    return Response.json(user);
+    return new Response(null, { status: 404 });
   },
   responses: {
     200: { description: "User updated successfully", content: UserDTO },
     404: { description: "User not found" },
-    409: { description: "Email already exists" },
   },
 });
 
-export const { DELETE } = createRoute({
+export const { DELETE } = defineRoute({
   operationId: "deleteUser",
   method: "DELETE",
-  summary: "Delete a specific user by ID",
-  description: "Remove a specific user from the system by their ID",
+  summary: "Delete user",
+  description: "Delete a specific user by ID",
   tags: ["Users"],
-  pathParams: z.object({
-    id: z.string().describe("ID of the user"),
-  }),
+  pathParams: UserDTO.pick({ id: true }),
   action: async ({ pathParams }) => {
-    const results = await db.delete(users).where(eq(users.id, pathParams.id)).returning({
-      id: users.id,
-    });
-    const user = results.shift();
-    if (!user || user.id !== pathParams.id) {
-      return new Response(null, { status: 404 });
+    const user = await deleteUser(db, pathParams.id);
+    if (user?.id === pathParams.id) {
+      return new Response(null, { status: 204 });
     }
-    return new Response(null, { status: 204 });
+    return new Response(null, { status: 404 });
   },
   responses: {
     204: { description: "User deleted successfully" },
