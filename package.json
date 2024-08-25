@@ -1,17 +1,15 @@
 {
-  "private": false,
+  "private": true,
   "name": "user-service",
   "version": "1.0.0",
   "description": "User service",
-  "publishConfig": {
-    "registry": "http://localhost:4873/"
-  },
   "type": "module",
   "scripts": {
+    "add:model": "generate-scaffold",
     "migrate": "drizzle-kit generate",
     "unmigrate": "drizzle-kit drop",
     "build:interface": "generate-service-interface -f next -s src/models",
-    "publish:interface": "npm run build:interface && npm publish ./dist",
+    "pack:interface": "npm run build:interface && npm pack ./dist",
     "prebuild": "ts-unused-exports tsconfig.json --excludePathsFromReport='app;.config;instrumentation;schema;models'",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
@@ -34,6 +32,7 @@
     "@next/eslint-plugin-next": "^14.2.5",
     "@omer-x/eslint-config": "^1.0.7",
     "@omer-x/next-openapi-interface-generator": "^0.10.2",
+    "@omer-x/next-openapi-scaffold-generator": "^0.3.0",
     "@omer-x/openapi-types": "^0.2.1",
     "@types/node": "22.4.0",
     "@types/pg": "^8.11.6",
