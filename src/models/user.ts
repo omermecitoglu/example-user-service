@@ -1,14 +1,13 @@
-import { createInsertSchema } from "drizzle-zod";
-import { users } from "~/database/schema/users";
-import type z from "zod";
+import z from "zod";
 
-const baseSchema = createInsertSchema(users, {
-  id: schema => schema.id.readonly().describe("Unique identifier of the user"),
-  name: schema => schema.name.describe("Display name of the user"),
-  email: schema => schema.email.describe("Email address of the user"),
-  password: schema => schema.password.describe("Encrypted password of the user"),
-  createdAt: schema => schema.createdAt.readonly().describe("Creation date of the user as an ISO 8601 date string"),
-  updatedAt: schema => schema.updatedAt.readonly().describe("Modification date of the user as an ISO 8601 date string"),
+const baseSchema = z.object({
+  id: z.string().uuid().readonly()
+    .describe("Unique identifier of the user"),
+  name: z.string().describe("Display name of the user"),
+  email: z.string().email().describe("Email address of the user"),
+  password: z.string().describe("Encrypted password of the user"),
+  createdAt: z.string().readonly().describe("Creation date of the user as an ISO 8601 date string"),
+  updatedAt: z.string().readonly().describe("Modification date of the user as an ISO 8601 date string"),
 });
 
 export const UserDTO = baseSchema.required()

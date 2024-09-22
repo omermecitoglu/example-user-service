@@ -1,7 +1,5 @@
 export async function register() {
   if (process.env.NEXT_RUNTIME === "nodejs") {
-    const { drizzle } = await import("drizzle-orm/node-postgres");
-    const { migrate } = await import("drizzle-orm/node-postgres/migrator");
     const { Client } = await import("pg");
     const path = await import("path");
     const fs = await import("fs");
@@ -49,8 +47,6 @@ export async function register() {
 
     const client = new Client(dbCredentials);
     await client.connect();
-    const db = drizzle(client);
-    await migrate(db, { migrationsFolder: "./drizzle" });
     await client.end();
   }
 }

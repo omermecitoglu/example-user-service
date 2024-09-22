@@ -1,9 +1,6 @@
 import defineRoute from "@omer-x/next-openapi-route-handler";
 import z from "zod";
-import db from "~/database";
 import { NewUserDTO, UserDTO } from "~/models/user";
-import createUser from "~/operations/createUser";
-import getUsers from "~/operations/getUsers";
 
 export const { GET } = defineRoute({
   operationId: "getUsers",
@@ -16,7 +13,9 @@ export const { GET } = defineRoute({
       .describe("List of the column names"),
   }),
   action: async ({ queryParams }) => {
-    return Response.json(await getUsers(db, queryParams.select));
+    return Response.json([
+      // put users here
+    ] satisfies z.infer<typeof UserDTO>[]);
   },
   responses: {
     200: { description: "Returns a list of users", content: UserDTO, isArray: true },
@@ -31,7 +30,14 @@ export const { POST } = defineRoute({
   tags: ["Users"],
   requestBody: NewUserDTO,
   action: async ({ body }) => {
-    const user = await createUser(db, body);
+    const user: z.infer<typeof UserDTO> = {
+      id: "uuid",
+      name: body.name,
+      email: body.email,
+      password: body.password,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
     return Response.json(user, { status: 201 });
   },
   responses: {
