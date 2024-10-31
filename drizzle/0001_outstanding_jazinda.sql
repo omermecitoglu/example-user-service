@@ -1,0 +1,1 @@
+CREATE INDEX IF NOT EXISTS "users_created_at_index" ON "users" USING btree ("created_at");
