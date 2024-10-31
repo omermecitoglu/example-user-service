@@ -15,4 +15,5 @@ export default {
     password: process.env.DATABASE_PASS || "example",
     database: process.env.DATABASE_NAME || getPackageMetadata().moduleName,
   },
+  casing: "snake_case",
 } satisfies Config;

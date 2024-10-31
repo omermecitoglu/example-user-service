@@ -13,6 +13,7 @@ const pool = new Pool({
 
 const db = drizzle(pool, {
   schema,
+  casing: "snake_case",
   logger: process.env.NODE_ENV === "development",
 });
 
