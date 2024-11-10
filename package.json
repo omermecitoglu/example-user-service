@@ -18,25 +18,25 @@
     "start": "next start"
   },
   "dependencies": {
-    "@omer-x/next-openapi-json-generator": "^1.0.1",
+    "@omer-x/next-openapi-json-generator": "^1.2.2",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.35.0",
     "drizzle-zod": "^0.5.1",
-    "next": "^14.2.15",
-    "pg": "^8.13.0",
+    "next": "^14.2.17",
+    "pg": "^8.13.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "swagger-ui-react": "^5.17.14"
+    "swagger-ui-react": "^5.18.2"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^14.2.15",
+    "@next/eslint-plugin-next": "^14.2.17",
     "@omer-x/eslint-config": "^1.0.7",
     "@omer-x/next-openapi-interface-generator": "^0.11.0",
     "@omer-x/next-openapi-scaffold-generator": "^0.3.0",
-    "@omer-x/openapi-types": "^0.2.1",
-    "@types/node": "22.7.5",
+    "@omer-x/openapi-types": "^1.1.0",
+    "@types/node": "22.9.0",
     "@types/pg": "^8.11.10",
-    "@types/react": "18.3.11",
+    "@types/react": "18.3.12",
     "@types/swagger-ui-react": "^4.18.3",
     "drizzle-kit": "^0.26.1",
     "eslint": "^8.57.1",
