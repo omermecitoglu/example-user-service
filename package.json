@@ -33,7 +33,7 @@
     "@omer-x/eslint-config": "^1.0.7",
     "@omer-x/next-openapi-interface-generator": "^0.11.0",
     "@omer-x/next-openapi-scaffold-generator": "^0.3.0",
-    "@omer-x/openapi-types": "^1.1.0",
+    "@omer-x/openapi-types": "^1.2.0",
     "@types/node": "22.9.0",
     "@types/pg": "^8.11.10",
     "@types/react": "18.3.12",
