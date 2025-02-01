@@ -15,7 +15,7 @@ export async function register() {
         const appName = packageName.split("/").pop();
         if (!appName) throw new Error(`Invalid package name (${packageName})`);
         return appName;
-      } catch (error) {
+      } catch {
         return "unknown-service";
       }
     };
@@ -39,7 +39,7 @@ export async function register() {
         } finally {
           await creator.end();
         }
-      } catch (error) {
+      } catch {
         await creator.end();
         await new Promise(resolve => setTimeout(resolve, 1000));
         await connect();
