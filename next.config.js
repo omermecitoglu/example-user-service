@@ -2,7 +2,7 @@
 
 const nextConfig = {
   experimental: {
-    instrumentationHook: true,
+    authInterrupts: true,
   },
   webpack: config => {
     config.externals.push("typescript");
