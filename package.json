@@ -22,27 +22,27 @@
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.36.1",
     "drizzle-zod": "^0.5.1",
-    "next": "^15.1.6",
-    "pg": "^8.13.1",
+    "next": "^15.2.4",
+    "pg": "^8.14.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "swagger-ui-react": "^5.18.3"
+    "swagger-ui-react": "^5.20.1"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^15.1.6",
+    "@next/eslint-plugin-next": "^15.2.4",
     "@omer-x/eslint-config": "^2.1.2",
     "@omer-x/next-openapi-interface-generator": "^0.11.0",
     "@omer-x/next-openapi-scaffold-generator": "^0.3.0",
     "@omer-x/openapi-types": "^1.2.0",
-    "@types/node": "22.13.0",
+    "@types/node": "22.13.13",
     "@types/pg": "^8.11.11",
     "@types/react": "18.3.12",
     "@types/swagger-ui-react": "^5.18.0",
     "drizzle-kit": "^0.28.0",
-    "eslint": "^9.19.0",
+    "eslint": "^9.23.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.4",
-    "ts-unused-exports": "^10.1.0",
-    "typescript": "5.7.3"
+    "ts-unused-exports": "^11.0.1",
+    "typescript": "5.8.2"
   }
 }
