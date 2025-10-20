@@ -10,7 +10,7 @@
     "unmigrate": "drizzle-kit drop",
     "build:interface": "generate-service-interface -f next -s src/models",
     "pack:interface": "npm run build:interface && npm pack ./dist",
-    "prebuild": "ts-unused-exports tsconfig.json --excludePathsFromReport='app;.config;instrumentation;schema;models'",
+    "prebuild": "ts-unused-exports tsconfig.json --excludePathsFromReport='.next;app;.config;instrumentation;schema;models'",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "dev": "next dev",
